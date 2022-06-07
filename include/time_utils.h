@@ -28,5 +28,14 @@ long_time_t TimeInMillisecond(void) {
 #endif
 }
 
+void TimeCost(char const* msg) {
+    static long_time_t start_time = 0;
+    if (msg && start_time != 0) {
+        long_time_t current_time = TimeInMillisecond();
+        PRINTLNF("%s costs: %lld", msg, current_time - start_time);
+    }
+    start_time = TimeInMillisecond();
+}
+
 
 #endif //C_DEMO_TIME_UTILS_H
