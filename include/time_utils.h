@@ -37,5 +37,11 @@ void TimeCost(char const* msg) {
     start_time = TimeInMillisecond();
 }
 
+void SleepMs(long milliseconds) {
+    long seconds = milliseconds / 1000;
+    long nanoseconds = (milliseconds % 1000) * 1000000L;
+    thrd_sleep(&(struct timespec) {.tv_sec=seconds, .tv_nsec=nanoseconds}, NULL);
+}
+
 
 #endif //C_DEMO_TIME_UTILS_H
